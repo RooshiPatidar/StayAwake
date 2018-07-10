@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:theme="@style/Theme.AppCompat.NoActionBar"
+    tools:context=".MathActivity">
+
+    <TextView
+        android:id="@+id/problemTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/scoreTextView"
+        android:layout_centerHorizontal="true"
+        android:text="2 + 2 = ?"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/scoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="51dp"
+        android:layout_marginTop="30dp"
+        android:text="0/2"
+        android:textSize="30sp"
+        tools:background="#ff6d00" />
+
+    <TextView
+        android:id="@+id/topRightTextView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/topLeftTextView"
+        android:layout_toEndOf="@+id/topLeftTextView"
+        android:background="#76ff03"
+        android:gravity="center_vertical|center_horizontal"
+        android:onClick="choiceSelected"
+        android:tag="1"
+        android:text="1"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/botRightTextView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignStart="@+id/topRightTextView"
+        android:layout_below="@+id/topRightTextView"
+        android:background="#00e5ff"
+        android:gravity="center_vertical|center_horizontal"
+        android:onClick="choiceSelected"
+        android:tag="3"
+        android:text="3"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/botLeftTextView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/topRightTextView"
+        android:layout_toStartOf="@+id/topRightTextView"
+        android:background="#f50057"
+        android:gravity="center_vertical|center_horizontal"
+        android:onClick="choiceSelected"
+        android:tag="2"
+        android:text="2"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/topLeftTextView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="126dp"
+        android:background="#6200ea"
+        android:gravity="center_vertical|center_horizontal"
+        android:onClick="choiceSelected"
+        android:tag="0"
+        android:text="0"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:textSize="50sp" />
+
+</RelativeLayout>

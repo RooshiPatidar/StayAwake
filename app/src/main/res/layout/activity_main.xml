@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     tools:context=".MainActivity">
 
     <TextView
@@ -17,33 +18,23 @@
         android:textAlignment="center"
         android:textSize="30sp" />
 
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="110dp"
-        android:layout_height="64dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="145dp"
-        android:onClick="onStart"
-        android:text="Start" />
-
     <SeekBar
         android:id="@+id/intervalSeekBar"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_height="41dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="196dp"
-        android:max="2"
+        android:layout_marginTop="146dp"
+        android:max="9"
         android:progress="1" />
 
     <TextView
-        android:id="@+id/IntervalLength"
+        android:id="@+id/intervalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/intervalSeekBar"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="226dp"
+        android:layout_marginBottom="-146dp"
         android:text="Interval Length"
         android:textSize="24sp" />
 
@@ -51,9 +42,46 @@
         android:id="@+id/intervalLengthTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/intervalSeekBar"
+        android:layout_centerHorizontal="true"
+        android:text="30 Seconds"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/numOfQsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/numQuestionsSeekBar"
+        android:layout_centerHorizontal="true"
+        android:text="Number of Questions"
+        android:textSize="24sp" />
+
+    <SeekBar
+        android:id="@+id/numQuestionsSeekBar"
+        android:layout_width="300dp"
+        android:layout_height="46dp"
+        android:layout_above="@+id/numQuestionsTextView"
+        android:layout_centerHorizontal="true"
+        android:max="9"
+        android:progress="1" />
+
+    <TextView
+        android:id="@+id/numQuestionsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="146dp"
-        android:text="Medium"
+        android:layout_marginBottom="132dp"
+        android:text="2 Questions"
         android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="110dp"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:onClick="onStart"
+        android:text="Start" />
 </RelativeLayout>
