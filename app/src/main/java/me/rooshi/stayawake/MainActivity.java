@@ -2,16 +2,22 @@ package me.rooshi.stayawake;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import android.support.design.widget.BottomNavigationView;
+
 
 import java.util.Random;
 
@@ -37,11 +43,17 @@ public class MainActivity extends AppCompatActivity {
     int timing;
     CountDownTimer countDownTimer;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
+            getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+        }
+        */
 
         intervalTextView = findViewById(R.id.intervalTextView);
         intervalSeekBar = findViewById(R.id.intervalSeekBar);

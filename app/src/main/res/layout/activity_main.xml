@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -22,9 +23,8 @@
         android:id="@+id/intervalSeekBar"
         android:layout_width="300dp"
         android:layout_height="41dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/intervalTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="146dp"
         android:max="9"
         android:progress="1" />
 
@@ -32,9 +32,9 @@
         android:id="@+id/intervalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/intervalSeekBar"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-146dp"
+        android:layout_marginTop="101dp"
         android:text="Interval Length"
         android:textSize="24sp" />
 
@@ -51,8 +51,9 @@
         android:id="@+id/numOfQsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/numQuestionsSeekBar"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="248dp"
         android:text="Number of Questions"
         android:textSize="24sp" />
 
@@ -60,7 +61,7 @@
         android:id="@+id/numQuestionsSeekBar"
         android:layout_width="300dp"
         android:layout_height="46dp"
-        android:layout_above="@+id/numQuestionsTextView"
+        android:layout_below="@+id/numOfQsTextView"
         android:layout_centerHorizontal="true"
         android:max="9"
         android:progress="1" />
@@ -69,9 +70,8 @@
         android:id="@+id/numQuestionsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/numQuestionsSeekBar"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="132dp"
         android:text="2 Questions"
         android:textSize="30sp" />
 
@@ -81,7 +81,20 @@
         android:layout_height="64dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="195dp"
         android:onClick="onStart"
         android:text="Start" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="false"
+        android:clickable="true"
+        android:theme="@style/AppTheme"
+        app:srcCompat="@android:drawable/ic_media_play"
+        app:layout_anchorGravity="center|bottom"/>
+
 </RelativeLayout>
