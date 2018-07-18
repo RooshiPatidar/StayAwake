@@ -1,5 +1,8 @@
 package me.rooshi.stayawake;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,6 +11,8 @@ import android.os.CountDownTimer;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -47,6 +52,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String name = "Timer";
+            String description = "Timer after wait time";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel("666", name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
 
         /*
         if (Build.VERSION.SDK_INT >= 21) {
@@ -99,10 +116,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onStart(View view) {
 
+        vibrateForMillis(100);
+
         if (!running) {
 
             //ack vibrate
-            vibrateForMillis(100);
 
             intervalTextView.setVisibility(View.INVISIBLE);
             intervalSeekBar.setVisibility(View.INVISIBLE);
@@ -149,11 +167,33 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                NotificationCompat.Builder notiBuilder = new NotificationCompat.Builder(getApplicationContext(), "666")
+                        .setSmallIcon(R.drawable.ic_launcher_foreground)
+                        .setContentTitle("Wake up!")
+                        .setContentText("Click here to solve problems!")
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .setAutoCancel(true);
+
+
+                Intent nIntent = new Intent(getApplicationContext(), MathActivity.class);
+                nIntent.putExtra("numQ", numQsSeekBar.getProgress() + 1);
+                nIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, nIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+                notiBuilder.setContentIntent(pendingIntent);
+
+
+                NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+                notificationManagerCompat.notify(1, notiBuilder.build());
+
+
                 vibrateIndefinitely();
 
-                Intent mathIntent = new Intent(getApplicationContext(), MathActivity.class);
-                mathIntent.putExtra("numQ", numQsSeekBar.getProgress() + 1);
-                startActivityForResult(mathIntent, 66);
+
+                //Intent mathIntent = new Intent(getApplicationContext(), MathActivity.class);
+                //mathIntent.putExtra("numQ", numQsSeekBar.getProgress() + 1);
+                startActivityForResult(nIntent, 66);
+
             }
         }.start();
     }
@@ -179,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void vibrateForMillis(int millis) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator.vibrate(VibrationEffect.createOneShot(millis, 10));
+            vibrator.vibrate(VibrationEffect.createOneShot(millis, 100));
         }
         else{
             //deprecated in API 26

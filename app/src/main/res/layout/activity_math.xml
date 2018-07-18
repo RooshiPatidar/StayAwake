@@ -15,6 +15,7 @@
         android:layout_alignTop="@+id/scoreTextView"
         android:layout_centerHorizontal="true"
         android:text="2 + 2 = ?"
+        android:textColor="@android:color/black"
         android:textSize="30sp" />
 
     <TextView
